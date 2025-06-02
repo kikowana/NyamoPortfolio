@@ -15,72 +15,129 @@ import '../styles/global.css'
       <main class="card-list">
         <section id="about" class="card">
           <h2 class="pastelPink">About</h2>
-          <p>♡ご依頼について♡<br>
+          <p class="intro-text">ご依頼について<br>
           丁寧な対応を心がけております！<br>
-          ご依頼初心者の方でもお気軽にお声掛けください♡</p>
-          <ul>
-            <li>♡得意分野<br>
-              女性らしい身体 / キャラクターデザイン / 厚塗り
-            </li>
-            <li>♡サンプル公開<br>
-              制作物をサンプルとして紹介することがあります。
-            </li>
-            <li>♡NG内容<br>
-              獣人（耳尻尾のみは可）、機械、壮年〜老年の男女、過度なR18表現
-            </li>
-          </ul>
+          ご依頼初心者の方でもお気軽にお声掛けください</p>
+          
+          <div class="feature-cards">
+            <div class="feature-card">
+              <div class="feature-icon"></div>
+              <h3>得意分野</h3>
+              <p>女性らしい身体 / キャラクターデザイン / 厚塗り</p>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon"></div>
+              <h3>サンプル公開</h3>
+              <p>制作物をサンプルとして紹介することがあります。</p>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon"></div>
+              <h3>NG内容</h3>
+              <p>獣人（耳尻尾のみは可）、機械、壮年〜老年の男女、過度なR18表現</p>
+            </div>
+          </div>
         </section>
 
         <section id="price" class="card">
           <h2 class="pastelPink">Price</h2>
-          <ul>
-            <li>♡立ち絵<br>
-              全身 ：10000円〜<br>
-              複雑なポーズ指定 : 15000円〜<br>
-              SDキャラ ：4000円〜</li>
-            <li>♡1枚絵<br>
-              1枚絵 : 8500円〜<br>
-              複雑なポーズ指定 : 12000円〜<br>
-              バストアップ：7000円〜</li>
-            <li>♡アイコンイラスト<br>
-              正方形 : 4000円</li>
-            <li>♡キャラデザインのみ : 4000円</li>
-            <li>複数人の場合：人数×料金（簡易は半額）</li>
-            <li>オプション<br>
-              三面図：8000円<br>
-              商用利用：料金の20%～50%<br>
-              表情差分：1つ500円（2つ以上から受付）<br>
-              ポーズ差分：1000円～基本料金50%<br>
-              髪型差分：1500円～<br>
-              サンプル掲載なし：4000円<br>
-              納期短縮：2000円～<br>
-              1週間以内：6000円～<br>
-              著作権譲渡：全体の70％
-            </li>
-          </ul>
+          
+          <div class="price-cards">
+            <div class="price-card">
+              <div class="price-header">
+                <h3>立ち絵</h3>
+              </div>
+              <div class="price-content">
+                <div class="price-item"><span>全身</span><span>10000円〜</span></div>
+                <div class="price-item"><span>複雑なポーズ指定</span><span>15000円〜</span></div>
+                <div class="price-item"><span></span><span></span></div>
+              </div>
+            </div>
+            
+            <div class="price-card">
+              <div class="price-header">
+                <h3>1枚絵</h3>
+              </div>
+              <div class="price-content">
+                <div class="price-item"><span>1枚絵</span><span>8500円〜</span></div>
+                <div class="price-item"><span>複雑なポーズ指定</span><span>12000円〜</span></div>
+                <div class="price-item"><span>バストアップ</span><span>7000円〜</span></div>
+              </div>
+            </div>
+            
+            <div class="price-card">
+              <div class="price-header">
+                <h3>その他</h3>
+              </div>
+              <div class="price-content">
+                <div class="price-item"><span>アイコンイラスト</span><span>4000円</span></div>
+                <div class="price-item"><span>キャラデザインのみ</span><span>4000円</span></div>
+                <div class="price-item"><span>SDキャラ</span><span>4000円〜</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="option-card">
+            <h3>オプション</h3>
+            <div class="option-grid">
+              <div class="option-item"><span>三面図</span><span>8000円</span></div>
+              <div class="option-item"><span>商用利用</span><span>料金の20%～50%</span></div>
+              <div class="option-item"><span>表情差分</span><span>1つ500円（2つ以上から受付）</span></div>
+              <div class="option-item"><span>ポーズ差分</span><span>1000円～基本料金50%</span></div>
+              <div class="option-item"><span>髪型差分</span><span>1500円～</span></div>
+              <div class="option-item"><span>サンプル掲載なし</span><span>4000円</span></div>
+              <div class="option-item"><span>納期短縮</span><span>2000円～</span></div>
+              <div class="option-item"><span>1週間以内</span><span>6000円～</span></div>
+              <div class="option-item"><span>著作権譲渡</span><span>全体の70％</span></div>
+            </div>
+          </div>
         </section>
 
         <section id="flow" class="card">
           <h2 class="pastelPink">Flow</h2>
-          <ol>
-            <li>依頼後要望を聞き、見積もり提示</li>
-            <li>お支払い</li>
-            <li>カラーラフ提出→修正→確認→納品</li>
-          </ol>
-          <p>
-            お支払いが確認でき次第作業に取り掛らせて頂きます。<br>
-            小物や複雑なデザイン(フリルや細かいデザイン)には追加料金が発生することがあります。
-          </p>
+          
+          <div class="flow-container">
+            <div class="flow-step">
+              <div class="flow-number">1</div>
+              <div class="flow-content">
+                <h3>依頼・相談</h3>
+                <p>依頼後要望を聞き、見積もり提示</p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-number">2</div>
+              <div class="flow-content">
+                <h3>お支払い</h3>
+                <p>指定の方法でお支払いください</p>
+              </div>
+            </div>
+            
+            <div class="flow-step">
+              <div class="flow-number">3</div>
+              <div class="flow-content">
+                <h3>制作・納品</h3>
+                <p>カラーラフ提出→修正→確認→納品</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flow-note">
+            <p>
+              お支払いが確認でき次第作業に取り掛らせて頂きます。<br>
+              小物や複雑なデザイン(フリルや細かいデザイン)には追加料金が発生することがあります。
+            </p>
+          </div>
         </section>
 
         <section id="links" class="card">
-          <h2 class="pastelPink">各種リンク</h2>
-          <ul>
-            <li><a href="https://lit.link/" target="_blank">lit.link</a></li>
-            <li><a href="https://twitter.com/" target="_blank">Twitter (X)</a></li>
-            <li><a href="https://skeb.jp/" target="_blank">Skeb</a></li>
-            <li><a href="https://www.pixiv.net/" target="_blank">pixiv</a></li>
-          </ul>
+          <h2 class="pastelPink">Links</h2>
+          <div class="links-btn-list">
+            <a class="link-btn" href="https://x.com/lz_nyn" target="_blank">Twitter (X)</a>
+            <a class="link-btn" href="https://skeb.jp/@lz__nyn" target="_blank">Skeb</a>
+            <a class="link-btn" href="https://www.pixiv.net/users/87163944" target="_blank">pixiv</a>
+          </div>
         </section>
       </main>
     </div>

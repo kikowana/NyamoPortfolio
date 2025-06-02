@@ -1,6 +1,7 @@
 <template>
-  <button :class="['nav-button', color]" @click="scrollToTarget">
-    <slot />
+  <button class="nav-button" @click="scrollToTarget">
+    <span><slot /></span>
+    <div class="hover-heart">♡</div>
   </button>
 </template>
 
@@ -8,8 +9,7 @@
 import { defineProps } from 'vue'
 
 const props = defineProps({
-  targetId: String,
-  color: String
+  targetId: String
 })
 
 function scrollToTarget() {
@@ -25,12 +25,5 @@ function scrollToTarget() {
 </script>
 
 <style>
-.nav-button {
-  padding: 10px 20px;
-  font-size: 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
+/* 削除: .nav-button のローカルスタイル（グローバルCSSで統一管理） */
 </style>

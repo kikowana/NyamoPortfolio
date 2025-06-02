@@ -1,11 +1,14 @@
 <template>
   <header class="header">
-    <nav class="nav">
-      <NavButton targetId="about" color="pastelPink">About</NavButton>
-      <NavButton targetId="price" color="pastelPink">Price</NavButton>
-      <NavButton targetId="flow" color="pastelPink">Flow</NavButton>
-      <NavButton targetId="links" color="pastelPink">Links</NavButton>
-    </nav>
+    <div class="header-inner">
+      <div class="header-title">Nya萌のアトリエ</div>
+      <nav class="nav">
+        <NavButton targetId="about">About</NavButton>
+        <NavButton targetId="price">Price</NavButton>
+        <NavButton targetId="flow">Flow</NavButton>
+        <NavButton targetId="links">Links</NavButton>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -23,10 +26,49 @@ import NavButton from './NavButton.vue'
   z-index: 999;
 }
 
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 68px;
+}
+
+.header-title {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.7rem;
+  color: #e91e63;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
 .nav {
   display: flex;
   justify-content: center;
   gap: 24px;
-  padding: 16px 0;
+  padding: 0;
+}
+
+@media (max-width: 700px) {
+  .header-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 16px;
+  }
+  
+  .header-title {
+    margin-bottom: 10px;
+  }
+  
+  .nav {
+    gap: 10px;
+  }
+  
+  .nav-button {
+    padding: 6px 16px;
+    font-size: 0.9rem;
+  }
 }
 </style>
