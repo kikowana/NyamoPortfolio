@@ -11,5 +11,9 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [vue()]
+  integrations: [vue()],
+
+  // ここを変更する必要がある
+  site: 'https://kikowana.github.io',
+  base: 'TestPage'
 });

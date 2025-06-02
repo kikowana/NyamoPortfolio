@@ -6,12 +6,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
-const props = defineProps({
-  targetId: String
-})
-
 function scrollToTarget() {
   setTimeout(() => {
     const el = document.getElementById(props.targetId)
