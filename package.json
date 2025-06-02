@@ -2,10 +2,6 @@
   "name": "nyamoportfolio",
   "type": "module",
   "version": "0.0.1",
-  "overrides": {
-    "vite": {
-      "rollup": "npm:@rollup/wasm-node"
-    },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -31,9 +27,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kikowana/NyamoPortfolio/issues"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.6.1"
   },
   "homepage": "https://github.com/kikowana/NyamoPortfolio#readme"
 }
