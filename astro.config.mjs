@@ -13,7 +13,6 @@ export default defineConfig({
 
   integrations: [vue()],
 
-  // ここを変更する必要がある
   site: 'https://kikowana.github.io',
-  base: 'TestPage'
+  base: '/TestPage/'
 });
