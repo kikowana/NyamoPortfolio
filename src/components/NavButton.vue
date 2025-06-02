@@ -6,6 +6,10 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  targetId: String
+})
+
 function scrollToTarget() {
   setTimeout(() => {
     const el = document.getElementById(props.targetId)
