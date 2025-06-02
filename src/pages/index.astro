@@ -6,7 +6,8 @@ import '../styles/global.css'
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>ポートフォリオ</title>
+    <title>Nya萌のアトリエ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
     <Header client:only="vue" />
@@ -15,11 +16,14 @@ import '../styles/global.css'
       <main class="card-list">
         <section id="about" class="card">
           <h2 class="pastelPink">About</h2>
-          <p class="intro-text">ご依頼について<br>
-          丁寧な対応を心がけております！<br>
-          ご依頼初心者の方でもお気軽にお声掛けください</p>
           
           <div class="feature-cards">
+            <div class="feature-card">
+              <div class="feature-icon"></div>
+              <h3>ご依頼について</h3>
+              <p>丁寧な対応を心がけております！<br>ご依頼初心者の方でもお気軽にお声掛けください</p>
+            </div>
+            
             <div class="feature-card">
               <div class="feature-icon"></div>
               <h3>得意分野</h3>
