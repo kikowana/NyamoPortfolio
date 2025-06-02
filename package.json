@@ -2,6 +2,10 @@
   "name": "nyamoportfolio",
   "type": "module",
   "version": "0.0.1",
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
