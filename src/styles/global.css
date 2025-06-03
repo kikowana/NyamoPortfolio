@@ -4,6 +4,22 @@
   --pastel-blue: #A7C7E7;
   --pastel-pink: #FADADD;
   --pastel-green: #C3E7B0;
+  --pastel-orange: #FFD8B1;
+  
+  /* テーマカラー（セクションによって変わる） */
+  --theme-color: #e91e63; /* デフォルトはピンク */
+  --theme-accent-color: #ad1457; /* デフォルトは濃いピンク */
+  --theme-color-rgb: 233, 30, 99; /* デフォルトはピンク（RGB形式） */
+  
+  /* 各セクションのテーマカラー */
+  --about-color: #e91e63;
+  --about-color-rgb: 233, 30, 99;
+  --flow-color: #2196f3;
+  --flow-color-rgb: 33, 150, 243;
+  --price-color: #4caf50;
+  --price-color-rgb: 76, 175, 80;
+  --links-color: #ff9800;
+  --links-color-rgb: 255, 152, 0;
 }
 
 * {
@@ -15,10 +31,35 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans JP';
-  background-color: #f9fafb;
   color: #333;
   overflow-x: hidden;
   width: 100%;
+}
+
+.bg-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #fef5f7 0%, #f9fafb 100%);
+  z-index: -1;
+  transition: background 1s ease;
+  pointer-events: none; /* クリックイベントを通過させる */
+}
+
+.site-bg-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 80px; /* ヘッダーの高さ分だけ余白を確保 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  background: none;
+  overflow-x: hidden;
 }
 
 header {
@@ -144,47 +185,96 @@ h2 {
   color: var(--pastel-green);
 }
 
-.site-bg-wrapper {
-  min-height: 100vh;
-  width: 100%;
-  background: none;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  overflow-x: hidden;
-}
+/* この重複定義を削除し、上の.site-bg-wrapperの定義に統合 */
 
 .site-bg-wrapper main {
   max-width: 640px;
   width: 100%;
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-  border-radius: 16px;
-  margin: 32px 0 32px 0;
-  padding: 32px 24px;
+  background: transparent;
+  margin: 32px auto; /* 左右のマージンをautoに変更して中央揃え */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
 }
 
 .card-list {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
+  max-width: 640px;
 }
 
 .card {
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 2px 16px 0 rgba(250, 218, 221, 0.45);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 2px 16px 0 rgba(var(--theme-color-rgb, 250, 218, 221), 0.25);
   border-radius: 16px;
   padding: 32px 24px;
+  margin-bottom: 32px;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* カードの幅を100%に設定 */
+}
+
+/* アクティブなセクションのスタイル */
+.card.active-section {
+  box-shadow: 0 4px 20px 0 rgba(var(--theme-color-rgb), 0.35);
+}
+
+/* セクションごとの装飾 */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at top right, 
+                              rgba(var(--theme-color-rgb), 0.07), 
+                              transparent 70%);
+  border-top-right-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card.active-section::before {
+  opacity: 1;
+}
+
+.card h2 {
+  color: var(--theme-color);
+  transition: color 0.5s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.card h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--theme-color);
+  transform: scaleX(0.7);
+  transform-origin: left;
+  transition: transform 0.5s ease, background-color 0.5s ease;
+}
+
+.card h2:hover::after {
+  transform: scaleX(1);
 }
 
 a {
-  color: #e91e63; /* ピンク */
+  color: var(--theme-color);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.3s;
 }
 
 a:hover {
-  color: #ad1457; /* 濃いピンク */
+  color: var(--theme-accent-color);
 }
 
 .links-btn-list {
@@ -198,24 +288,47 @@ a:hover {
   display: inline-block;
   padding: 10px 28px;
   border-radius: 9999px;
-  background: #fadadd;
-  color: white;
+  background: rgba(var(--theme-color-rgb, 233, 30, 99), 0.15);
+  color: var(--theme-color);
   font-weight: bold;
   font-size: 1rem;
   text-decoration: none;
   border: none;
   outline: none;
-  box-shadow: 8px 8px 16px #e0bfc2, -8px -8px 16px #fff6f8;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.08), -4px -4px 12px rgba(255,255,255,0.8);
+  transition: all 0.3s ease;
   /* ニューモーフィズム風 */
   min-width: 140px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.link-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--theme-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
 }
 
 .link-btn:hover {
-  background: #e91e63;
-  color: #fff;
-  box-shadow: 4px 4px 12px #e0bfc2, -4px -4px 12px #fff6f8;
+  background: rgba(var(--theme-color-rgb), 0.2);
+  color: var(--theme-accent-color);
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.15), -2px -2px 8px rgba(255,255,255,0.6);
+  transform: translateY(-2px);
+}
+
+.link-btn:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .intro-text {
@@ -256,7 +369,8 @@ a:hover {
 .feature-card h3 {
   font-size: 1.2rem;
   margin: 0 0 12px 0;
-  color: #e91e63;
+  color: var(--theme-color);
+  transition: color 0.5s ease;
 }
 
 .feature-card p {
@@ -293,8 +407,9 @@ a:hover {
 
 .price-header h3 {
   margin: 0;
-  color: #e91e63;
+  color: var(--theme-color);
   font-size: 1.3rem;
+  transition: color 0.5s ease;
 }
 
 .price-content {
@@ -322,8 +437,9 @@ a:hover {
 
 .option-card h3 {
   margin: 0 0 16px 0;
-  color: #e91e63;
+  color: var(--theme-color);
   text-align: center;
+  transition: color 0.5s ease;
 }
 
 .option-grid {
@@ -391,7 +507,8 @@ a:hover {
 
 .flow-content h3 {
   margin: 0 0 8px 0;
-  color: #e91e63;
+  color: var(--theme-color);
+  transition: color 0.5s ease;
 }
 
 .flow-content p {
@@ -415,9 +532,10 @@ a:hover {
 @media (max-width: 700px) {
   .site-bg-wrapper main {
     max-width: 100%;
-    margin: 0;
+    margin: 0 auto;
     border-radius: 0;
     padding: 16px 8px;
+    align-items: center;
   }
   .site-bg-wrapper {
     background: none;
