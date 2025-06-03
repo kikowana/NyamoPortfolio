@@ -13,6 +13,5 @@ export default defineConfig({
 
   integrations: [vue()],
 
-  site: 'https://kikowana.github.io',
-  base: 'NyamoPortfolio',
+  site: 'https://nyanfolio.com',
 });
