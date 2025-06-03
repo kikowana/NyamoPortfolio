@@ -1,11 +1,10 @@
 <template>
   <header class="header">
     <div class="header-inner">
-      <div class="header-title">Nya萌のアトリエ</div>
-      <nav class="nav">
+      <div class="header-title">nya萌のアトリエ</div>      <nav class="nav">
         <NavButton targetId="about">About</NavButton>
-        <NavButton targetId="price">Price</NavButton>
         <NavButton targetId="flow">Flow</NavButton>
+        <NavButton targetId="price">Price</NavButton>
         <NavButton targetId="links">Links</NavButton>
       </nav>
     </div>
@@ -47,7 +46,7 @@ import NavButton from './NavButton.vue'
 .nav {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 12px;
   padding: 0;
 }
 
@@ -61,14 +60,35 @@ import NavButton from './NavButton.vue'
   .header-title {
     margin-bottom: 10px;
   }
-  
-  .nav {
-    gap: 10px;
+    .nav {
+    gap: 8px;
   }
   
   .nav-button {
     padding: 6px 16px;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding-bottom: 5px;
+  }
+  .header-inner {
+    padding: 10px 8px 5px 8px;
+  }
+  .header-title {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }  .nav {
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 4px;
+  }  .nav-button {
+    padding: 6px 6px;
+    font-size: 0.85rem;
+    min-width: 55px;
+    margin: 0 2px;
   }
 }
 </style>
