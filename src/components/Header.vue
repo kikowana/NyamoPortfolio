@@ -2,10 +2,10 @@
   <header class="header">
     <div class="header-inner">
       <div class="header-title">nya萌のアトリエ</div>      <nav class="nav">
-        <NavButton targetId="about">About</NavButton>
-        <NavButton targetId="flow">Flow</NavButton>
-        <NavButton targetId="price">Price</NavButton>
-        <NavButton targetId="links">Links</NavButton>
+        <NavButton class="nav-button-appear" targetId="about" style="--delay: 0.1s">About</NavButton>
+        <NavButton class="nav-button-appear" targetId="flow" style="--delay: 0.2s">Flow</NavButton>
+        <NavButton class="nav-button-appear" targetId="price" style="--delay: 0.3s">Price</NavButton>
+        <NavButton class="nav-button-appear" targetId="links" style="--delay: 0.4s">Links</NavButton>
       </nav>
     </div>
   </header>
@@ -48,6 +48,32 @@ import NavButton from './NavButton.vue'
   justify-content: center;
   gap: 12px;
   padding: 0;
+}
+
+.nav-button-appear {
+  animation: popIn 0.5s ease-in-out forwards;
+  transform: translateY(-20px);
+  opacity: 0;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes popIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(5px);
+    opacity: 0.9;
+  }
+  80% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 700px) {
