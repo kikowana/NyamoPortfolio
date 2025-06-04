@@ -294,12 +294,12 @@ const props = defineProps({
   }.nav {
     width: 100%;
     justify-content: space-evenly;
-    gap: 4px;
+    gap: 2px;  /* 4pxから2pxに狭める */
   }  .nav-button {
-    padding: 6px 6px;
-    font-size: 0.85rem;
-    min-width: 55px;
-    margin: 0 2px;
+    padding: 5px 5px;  /* 6px 6pxから5px 5pxに狭める */
+    font-size: 0.8rem;  /* 0.85remから0.8remに小さくする */
+    min-width: 50px;  /* 55pxから50pxに狭める */
+    margin: 0 1px;  /* 2pxから1pxに狭める */
   }
 }
 </style>
