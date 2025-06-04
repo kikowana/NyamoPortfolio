@@ -1,6 +1,5 @@
 ---
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
+import PageLayout from '../components/PageLayout.vue'
 import '../styles/global.css'
 ---
 
@@ -8,12 +7,13 @@ import '../styles/global.css'
     <meta charset="UTF-8" />
     <title>nya萌のアトリエ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <script src="../scripts/animation.js"></script>
+  </head><body>
     <div class="bg-gradient"></div>
-    <Header client:only="vue" />
     
-    <div class="site-bg-wrapper">
+    <PageLayout client:load pageType="home">
+      <div class="site-bg-wrapper site-content coming-from-gallery">
       <main class="card-list">
         <section id="about" class="card">
           <h2 class="pastelPink">About</h2>
@@ -142,10 +142,8 @@ import '../styles/global.css'
             <a class="link-btn" href="https://www.pixiv.net/users/87163944" target="_blank">pixiv</a>
             <a class="link-btn" href="mailto:mikunnn1217@gmail.com">mail</a>
           </div>
-        </section>
-      </main>
-      
-      <Footer client:load />
+        </section>      </main>
     </div>
+    </PageLayout>
   </body>
 </html>

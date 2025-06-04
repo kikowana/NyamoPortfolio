@@ -34,6 +34,118 @@ body {
   color: #333;
   overflow-x: hidden;
   width: 100%;
+  position: relative;
+}
+
+/* 固定ヘッダーとフッター用の新しいレイアウト構造 */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.fixed-footer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.page-content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px; /* ヘッダーの高さと同じ (72pxに更新) */
+}
+
+.site-content {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* ページ切り替えアニメーション */
+.coming-from-gallery {
+  animation: fadeSlideFromLeft 0.7s ease-out forwards;
+}
+
+.coming-from-home {
+  animation: fadeSlideFromRight 0.7s ease-out forwards;
+}
+
+/* より自然なページ遷移アニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeSlideToLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
+@keyframes fadeSlideToRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@keyframes fadeSlideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ページ遷移クラス */
+.page-transition-to-gallery {
+  animation: fadeSlideToRight 0.5s ease-in forwards;
+}
+
+.page-transition-to-home {
+  animation: fadeSlideToLeft 0.5s ease-in forwards;
 }
 
 .bg-gradient {
@@ -49,9 +161,9 @@ body {
 
 .site-bg-wrapper {
   position: relative;
-  min-height: 100vh;
   width: 100%;
-  padding-top: 70px; /* ヘッダーの高さ分の余白を80pxから70pxに縮小 */
+  min-height: 100%;
+  padding-top: 10px; /* 上部の余白を少し減らす（既にヘッダーと余白があるため） */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -62,8 +174,7 @@ body {
 }
 
 header {
-  position: fixed;
-  top: 0;
+  position: relative;
   width: 100%;
   background: linear-gradient(to bottom, #ffffff 0%, #fef5f7 100%);
   box-shadow: 0 4px 16px rgba(233,30,99,0.08);
@@ -118,6 +229,23 @@ header {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.nav-button .icon {
+  display: inline-block;
+  margin: 0 2px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  font-size: 16px;
+  vertical-align: middle;
+  color: #e91e63;
+}
+
+.material-icons-round.icon {
+  font-size: 16px;
+  line-height: 1;
+  vertical-align: middle;
+  margin-top: -3px;
+}
+
 .nav-button .hover-heart {
   position: absolute;
   left: 50%;
@@ -151,7 +279,7 @@ header {
 }
 
 main {
-  padding-top: 80px;
+  padding-top: 20px;
   max-width: 960px;
   margin: 0 auto;
   padding-left: 16px;
@@ -589,24 +717,23 @@ a:hover {
     box-shadow: none !important;
   }
   .site-bg-wrapper {
-    padding-top: 45px !important; /* ヘッダーの高さに合わせてさらに調整 */  }.card {
+    padding-top: 10px !important; /* 上部余白を調整 */  }.card {
     padding: 18px 16px !important;
     margin: 0 auto 20px auto !important;
     border-radius: 12px !important;
     box-shadow: 0 2px 8px rgba(var(--theme-color-rgb), 0.15) !important;
     width: calc(100% - 80px) !important;
     max-width: 420px !important;
-  }
-  section {
-    scroll-margin-top: 100px !important;
+  }  section {
+    scroll-margin-top: 20px !important;
     margin-bottom: 40px !important;
-    padding-top: 30px !important;
+    padding-top: 15px !important;
   }
   #about {
-    scroll-margin-top: 100px !important;
+    scroll-margin-top: 20px !important;
     padding-top: 10px !important;
     margin-top: 10px !important;
-  }  .feature-cards,
+  }.feature-cards,
   .price-cards,
   .option-grid,
   .flow-container,
