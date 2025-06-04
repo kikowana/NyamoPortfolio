@@ -52,7 +52,7 @@ body {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  padding-top: 80px; /* ヘッダーの高さ分だけ余白を確保 */
+  padding-top: 70px; /* ヘッダーの高さ分の余白を80pxから70pxに縮小 */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -191,7 +191,7 @@ h2 {
   max-width: 640px;
   width: 100%;
   background: transparent;
-  margin: 32px auto; /* 左右のマージンをautoに変更して中央揃え */
+  margin: 15px auto; /* 上部マージンを32pxから15pxに減らす */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -201,7 +201,7 @@ h2 {
 .card-list {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px; /* 32pxから24pxに縮小 */
   width: 100%;
   max-width: 640px;
 }
@@ -210,8 +210,8 @@ h2 {
   background: rgba(255,255,255,0.92);
   box-shadow: 0 2px 16px 0 rgba(var(--theme-color-rgb, 250, 218, 221), 0.25);
   border-radius: 16px;
-  padding: 32px 24px;
-  margin-bottom: 32px;
+  padding: 28px 22px; /* 32px 24pxから28px 22pxに縮小 */
+  margin-bottom: 28px; /* 32pxから28pxに縮小 */
   transition: all 0.5s ease;
   position: relative;
   overflow: hidden;
@@ -400,9 +400,10 @@ a:hover {
 }
 
 .price-header {
-  background: #fadadd;
+  background: rgba(var(--price-color-rgb, 76, 175, 80), 0.15);
   padding: 16px;
   text-align: center;
+  transition: background-color 0.5s ease;
 }
 
 .price-header h3 {
@@ -420,7 +421,8 @@ a:hover {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px dashed rgba(250, 218, 221, 0.5);
+  border-bottom: 1px dashed rgba(var(--price-color-rgb, 76, 175, 80), 0.2);
+  transition: border-color 0.5s ease;
 }
 
 .price-item:last-child {
@@ -431,8 +433,9 @@ a:hover {
   background: rgba(255,255,255,0.7);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 6px 16px rgba(250, 218, 221, 0.18);
+  box-shadow: 0 6px 16px rgba(var(--price-color-rgb, 76, 175, 80), 0.18);
   margin-top: 24px;
+  transition: box-shadow 0.5s ease;
 }
 
 .option-card h3 {
@@ -486,7 +489,7 @@ a:hover {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #e91e63;
+  background: var(--flow-color, #2196f3);
   color: white;
   display: flex;
   align-items: center;
@@ -494,15 +497,17 @@ a:hover {
   font-size: 1.5rem;
   font-weight: bold;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
+  box-shadow: 0 4px 12px rgba(var(--flow-color-rgb, 33, 150, 243), 0.2);
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 .flow-content {
   background: rgba(255,255,255,0.7);
   border-radius: 16px;
   padding: 16px 24px;
-  box-shadow: 0 6px 16px rgba(250, 218, 221, 0.18);
+  box-shadow: 0 6px 16px rgba(var(--flow-color-rgb, 33, 150, 243), 0.18);
   flex-grow: 1;
+  transition: box-shadow 0.5s ease;
 }
 
 .flow-content h3 {
@@ -519,9 +524,10 @@ a:hover {
   background: rgba(255,255,255,0.7);
   border-radius: 16px;
   padding: 16px 24px;
-  box-shadow: 0 6px 16px rgba(250, 218, 221, 0.18);
-  border: 1px dashed #fadadd;
+  box-shadow: 0 6px 16px rgba(var(--flow-color-rgb, 33, 150, 243), 0.18);
+  border: 1px dashed rgba(var(--flow-color-rgb, 33, 150, 243), 0.3);
   margin-top: 24px;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 .flow-note p {
@@ -543,16 +549,20 @@ a:hover {
     overflow-x: hidden;
   }
   .card {
-    border-radius: 8px;
-    padding: 16px 10px;
-    margin: 0 5px 20px 5px;
-  }
-  .feature-cards, .price-cards {
+    border-radius: 10px;
+    padding: 18px 14px;
+    margin: 0 auto 22px auto;
+    width: calc(100% - 60px);
+    max-width: 520px;
+  }  .feature-cards, .price-cards {
     grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 20px 0;
   }
   
   .option-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
   
   .flow-container:before {
@@ -571,46 +581,66 @@ a:hover {
     font-size: 15px;
     padding: 0;
     margin: 0;
+    background: #f9f9f9;
   }
-  .site-bg-wrapper main,
+  
+  header {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  main.card-list {
+    padding-top: 0 !important; /* 上部余白を削減 */
+  }.site-bg-wrapper main,
   .card-list {
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
     width: 100% !important;
     max-width: 100% !important;
     border-radius: 0 !important;
     box-shadow: none !important;
   }
-  .card {
-    padding: 16px 12px !important;
-    margin: 0 0 24px 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    width: calc(100% - 24px) !important;
+  .site-bg-wrapper {
+    padding-top: 45px !important; /* ヘッダーの高さに合わせてさらに調整 */  }.card {
+    padding: 18px 16px !important;
+    margin: 0 auto 20px auto !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(var(--theme-color-rgb), 0.15) !important;
+    width: calc(100% - 80px) !important;
+    max-width: 420px !important;
   }
   section {
-    scroll-margin-top: 240px !important;
+    scroll-margin-top: 100px !important;
     margin-bottom: 40px !important;
-    padding-top: 50px !important;
+    padding-top: 30px !important;
   }
   #about {
-    scroll-margin-top: 260px !important;
-    padding-top: 50px !important;
-    margin-top: 70px !important;
-  }
-  .feature-cards,
+    scroll-margin-top: 100px !important;
+    padding-top: 10px !important;
+    margin-top: 10px !important;
+  }  .feature-cards,
   .price-cards,
   .option-grid,
   .flow-container,
   .links-btn-list {
     flex-direction: column !important;
-    gap: 12px !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
   }
-  h2 {
-    font-size: 1.5rem !important;
+    .feature-card,
+  .price-card,
+  .option-card {
+    padding: 12px !important;
+  }
+  
+  .flow-content,
+  .flow-note {
+    padding: 12px 14px !important;
+  }  h2 {
+    font-size: 1.45rem !important;
     text-align: center !important;
-    margin-top: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
+    margin-top: 0.8rem !important;
+    margin-bottom: 1.2rem !important;
   }
   .header-title {
     font-size: 1.4rem !important;

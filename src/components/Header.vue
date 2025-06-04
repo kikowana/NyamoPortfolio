@@ -72,15 +72,15 @@ import NavButton from './NavButton.vue'
 
 @media (max-width: 600px) {
   .header {
-    padding-bottom: 5px;
+    padding-bottom: 2px;
   }
   .header-inner {
-    padding: 10px 8px 5px 8px;
+    padding: 6px 8px 2px 8px;
   }
   .header-title {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-  }  .nav {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+  }.nav {
     width: 100%;
     justify-content: space-evenly;
     gap: 4px;
