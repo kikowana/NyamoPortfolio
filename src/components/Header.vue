@@ -124,6 +124,11 @@ const props = defineProps({
   margin-left: auto;
 }
 
+.nav-button {
+  border-radius: 20px; /* デフォルトで全てのボタンの角を丸くする */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* スムーズなエフェクトのために遷移を追加 */
+}
+
 .nav-button-appear {
   animation: popIn 0.5s ease-in-out forwards;
   transform: translateY(-20px);
@@ -190,14 +195,14 @@ const props = defineProps({
   .hover-title {
     width: 100%;
     text-align: center;
-  }
-    .nav {
-    gap: 8px;
+  }    .nav {
+    gap: 5px; /* 8pxから5pxに狭める */
   }
   
   .nav-button {
-    padding: 6px 16px;
-    font-size: 0.9rem;
+    padding: 5px 14px; /* 6px 16pxから5px 14pxに小さくする */
+    font-size: 0.85rem; /* 0.9remから0.85remに小さくする */
+    border-radius: 18px; /* 角丸のスタイルを追加 */
   }
 }
 
@@ -300,6 +305,7 @@ const props = defineProps({
     font-size: 0.8rem;  /* 0.85remから0.8remに小さくする */
     min-width: 50px;  /* 55pxから50pxに狭める */
     margin: 0 1px;  /* 2pxから1pxに狭める */
+    border-radius: 16px; /* 小さいボタンに合わせて角丸も調整 */
   }
 }
 </style>
