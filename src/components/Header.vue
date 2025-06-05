@@ -5,16 +5,15 @@
           <span class="title-text">nya萌のアトリエ</span>
           <span class="title-decoration title-decoration-right">❀</span>
         </div>
-      </a>
-      <nav class="nav"><template v-if="pageType === 'home' || !pageType">
+      </a>      <nav class="nav"><template v-if="pageType === 'home' || !pageType">
           <NavButton class="nav-button-appear" targetId="about" style="--delay: 0.1s">About</NavButton>
           <NavButton class="nav-button-appear" targetId="flow" style="--delay: 0.2s">Flow</NavButton>
           <NavButton class="nav-button-appear" targetId="price" style="--delay: 0.3s">Price</NavButton>
           <NavButton class="nav-button-appear" targetId="links" style="--delay: 0.4s">Links</NavButton>
-          <NavButton class="nav-button-appear" pageLink="gallery" rightIcon="true" style="--delay: 0.5s">Gallery</NavButton>
+          <NavButton class="nav-button-appear" pageLink="gallery" :rightIcon="true" style="--delay: 0.5s">Gallery</NavButton>
         </template>
         <template v-else-if="pageType === 'gallery'">
-          <NavButton class="nav-button-appear" pageLink="/" leftIcon="true" style="--delay: 0.1s">Home</NavButton>
+          <NavButton class="nav-button-appear" pageLink="/" :leftIcon="true" style="--delay: 0.1s">Home</NavButton>
         </template>
       </nav>
     </div>
@@ -118,10 +117,10 @@ const props = defineProps({
 
 .nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center; /* flex-endから変更して中央揃えに */
   gap: 12px;
   padding: 0;
-  margin-left: auto;
+  width: 100%; /* 横幅を100%に設定して中央揃えをサポート */
 }
 
 .nav-button {
@@ -197,6 +196,8 @@ const props = defineProps({
     text-align: center;
   }    .nav {
     gap: 5px; /* 8pxから5pxに狭める */
+    justify-content: center; /* 中央揃え */
+    width: 100%; /* 横幅100%を明示 */
   }
   
   .nav-button {
@@ -295,17 +296,16 @@ const props = defineProps({
     100% {
       transform: translateY(-6px) rotate(12deg) scale(1.3);
       text-shadow: 0 0 10px rgba(233, 30, 99, 0.8);
-    }
-  }.nav {
+    }  }.nav {
     width: 100%;
     justify-content: space-evenly;
-    gap: 2px;  /* 4pxから2pxに狭める */
+    gap: 1px;  /* さらに間隔を狭める */
   }  .nav-button {
-    padding: 5px 5px;  /* 6px 6pxから5px 5pxに狭める */
-    font-size: 0.8rem;  /* 0.85remから0.8remに小さくする */
-    min-width: 50px;  /* 55pxから50pxに狭める */
-    margin: 0 1px;  /* 2pxから1pxに狭める */
-    border-radius: 16px; /* 小さいボタンに合わせて角丸も調整 */
+    padding: 4px 3px;  /* パディングをさらに小さくする */
+    font-size: 0.75rem;  /* フォントサイズをさらに小さくする */
+    min-width: 45px;  /* ボタンの最小幅を小さくする */
+    margin: 0 1px;
+    border-radius: 14px; /* 小さいボタンに合わせて角丸も調整 */
   }
 }
 </style>

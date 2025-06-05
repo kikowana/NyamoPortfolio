@@ -246,6 +246,12 @@ header {
   margin-top: -3px;
 }
 
+@media (max-width: 600px) {
+  .material-icons-round.icon {
+    font-size: 14px; /* モバイル表示でアイコンを小さくする */
+  }
+}
+
 .nav-button .hover-heart {
   position: absolute;
   left: 50%;

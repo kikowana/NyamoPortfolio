@@ -3,13 +3,15 @@
     <span>
       <span v-if="leftIcon" class="material-icons-round icon">arrow_back_ios</span>
       <slot />
-      <span v-if="rightIcon" class="material-icons-round icon">arrow_forward_ios</span>
+      <span v-if="rightIcon" :class="{'material-icons-round': true, 'icon': true, 'mobile-icon': isMobileView}">arrow_forward_ios</span>
     </span>
     <div class="hover-heart">♡</div>
   </button>
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
 const props = defineProps({
   targetId: String,
   pageLink: String,
@@ -17,7 +19,35 @@ const props = defineProps({
   leftIcon: Boolean
 })
 
+// サーバー側かクライアント側かを判断
+const isBrowser = typeof window !== 'undefined'
+const isMobileView = ref(false)
+
+// 画面サイズの変更を監視する
+const updateMobileView = () => {
+  if (isBrowser) {
+    isMobileView.value = window.innerWidth <= 600
+  }
+}
+
+onMounted(() => {
+  // マウント時に最初のサイズをチェック
+  updateMobileView()
+  
+  if (isBrowser) {
+    window.addEventListener('resize', updateMobileView)
+  }
+})
+
+onUnmounted(() => {
+  if (isBrowser) {
+    window.removeEventListener('resize', updateMobileView)
+  }
+})
+
 function handleClick() {
+  if (!isBrowser) return; // サーバーサイドでは何もしない
+  
   if (props.pageLink) {
     // ページ遷移の場合
     navigateToPage(props.pageLink);
@@ -28,9 +58,12 @@ function handleClick() {
 }
 
 function navigateToPage(path) {
+  if (!isBrowser) return; // サーバーサイドでは何もしない
+  
   // メインコンテンツ要素を取得
   const mainContent = document.querySelector('.page-content');
   if (!mainContent) return;
+  
   // パスに基づいて適切なアニメーションクラスを適用
   if (path === 'gallery') {
     // ギャラリーへの遷移時は右へフェードアウト
@@ -56,18 +89,56 @@ function navigateToPage(path) {
 }
 
 function scrollToTarget() {
+  if (!isBrowser) return; // サーバーサイドでは何もしない
+  
+  // スクロール調整のためにタイムアウトを設定
   setTimeout(() => {
     const el = document.getElementById(props.targetId)
     if (el) {
-      // モバイルデバイスかどうかを確認
+      // モバイルデバイスかどうかを確認（より適切な判定）
       const isMobile = window.innerWidth <= 600
-      // 特にAboutセクションの場合は追加のオフセットを適用
+      const isTablet = window.innerWidth > 600 && window.innerWidth <= 700
+      
+      // デフォルトのオフセット値を設定（PCサイズ）
       let offset = -100
+      
+      // 画面サイズに応じてオフセットを調整
       if (isMobile) {
-        offset = props.targetId === 'about' ? -300 : -250
+        // モバイル表示時のオフセット値を大幅に調整
+        switch (props.targetId) {
+          case 'about':
+            offset = -80; // 微調整
+            break;
+          case 'flow':
+            offset = -80; // 微調整
+            break;
+          case 'price':
+            offset = -80; // 微調整
+            break;
+          case 'links':
+            offset = -80; // 微調整
+            break;
+          default:
+            offset = -80; // デフォルト値
+        }
+        
+        // ヘッダーの高さを取得して動的に調整
+        const header = document.querySelector('.header');
+        if (header) {
+          const headerHeight = header.offsetHeight;
+          const additionalOffset = 0; // 必要に応じて追加オフセットを調整
+          offset = -headerHeight + additionalOffset;
+        }
+      } else if (isTablet) {
+        // タブレットサイズの場合は適切なオフセット
+        offset = -150;
       }
-      // 現在のスクロール位置を考慮した絶対位置を計算
-      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset
+      
+      // スクロール位置の計算をより正確に行う
+      const currentScrollPosition = window.scrollY;
+      const elementPosition = el.getBoundingClientRect().top + currentScrollPosition;
+      
+      // スクロール
       window.scrollTo({
         top: elementPosition + offset,
         behavior: 'smooth'
@@ -80,5 +151,12 @@ function scrollToTarget() {
 </script>
 
 <style>
-/* 削除: .nav-button のローカルスタイル（グローバルCSSで統一管理） */
+@media (max-width: 600px) {
+  .mobile-icon {
+    display: block;
+    font-size: 12px !important;
+    margin-top: 2px !important;
+    margin-bottom: -2px;
+  }
+}
 </style>
