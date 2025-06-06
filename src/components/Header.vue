@@ -117,10 +117,10 @@ const props = defineProps({
 
 .nav {
   display: flex;
-  justify-content: center; /* flex-endから変更して中央揃えに */
+  justify-content: flex-end; /* 中央揃えから右寄せに戻す */
   gap: 12px;
   padding: 0;
-  width: 100%; /* 横幅を100%に設定して中央揃えをサポート */
+  margin-left: auto; /* 右寄せを強化 */
 }
 
 .nav-button {
@@ -151,6 +151,15 @@ const props = defineProps({
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* モバイル・タブレットサイズでは中央揃えにする */
+@media (max-width: 700px) {
+  .nav {
+    justify-content: center; /* モバイルとタブレットでは中央揃え */
+    margin-left: 0; /* 右寄せをキャンセル */
+    width: 100%; /* 幅を100%に設定 */
   }
 }
 
@@ -259,8 +268,10 @@ const props = defineProps({
   }
   .header-inner {
     padding: 6px 8px 2px 8px;
-  }  .header-title {
-    font-size: 1.25rem;
+  }
+  
+  .header-title {
+    font-size: 1.15rem !important; /* 1.25remから1.15remへさらに小さく */
     margin-bottom: 4px;
     display: flex;
     justify-content: center;
@@ -268,9 +279,10 @@ const props = defineProps({
   }
   
   .title-decoration {
-    font-size: 1rem;
+    font-size: 0.9rem; /* 装飾アイコンも小さく */
   }
-    .header-title:hover {
+  
+  .header-title:hover {
     animation: titleFloat 2.5s ease-in-out infinite;
   }
   
@@ -296,16 +308,53 @@ const props = defineProps({
     100% {
       transform: translateY(-6px) rotate(12deg) scale(1.3);
       text-shadow: 0 0 10px rgba(233, 30, 99, 0.8);
-    }  }.nav {
+    }
+  }
+  
+  .nav {
     width: 100%;
     justify-content: space-evenly;
-    gap: 1px;  /* さらに間隔を狭める */
-  }  .nav-button {
-    padding: 4px 3px;  /* パディングをさらに小さくする */
-    font-size: 0.75rem;  /* フォントサイズをさらに小さくする */
-    min-width: 45px;  /* ボタンの最小幅を小さくする */
-    margin: 0 1px;
-    border-radius: 14px; /* 小さいボタンに合わせて角丸も調整 */
+    gap: 0px; /* ギャップをなくす */
+  }
+  
+  .nav-button {
+    padding: 2px 1px; /* パディングを最小限に */
+    font-size: 0.65rem; /* フォントサイズをさらに小さく */
+    min-width: 35px; /* ボタンの最小幅をさらに小さく */
+    margin: 0;
+    border-radius: 12px; /* 小さいボタンに合わせて角丸も調整 */
+  }
+  
+  /* アイコンもさらに小さく */
+  .mobile-icon {
+    font-size: 10px !important;
+    margin-top: 1px !important;
+    margin-bottom: -1px;
+  }
+  
+  /* スクリーンサイズに応じてボタンサイズを動的調整 */
+  @media (max-width: 380px) {
+    .nav-button {
+      font-size: 0.6rem; /* さらに小さく */
+      min-width: 30px;
+      padding: 2px 0px;
+    }
+    
+    .mobile-icon {
+      font-size: 9px !important;
+    }
+  }
+  
+  /* 画面が非常に小さい場合 */
+  @media (max-width: 340px) {
+    .nav-button {
+      font-size: 0.55rem; /* 極小サイズに */
+      min-width: 28px;
+    }
+    
+    .header-title {
+      font-size: 1.05rem !important; /* タイトルも極小に */
+    }
   }
 }
 </style>

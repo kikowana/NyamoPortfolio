@@ -1,6 +1,6 @@
 <template>
   <button class="nav-button" @click="handleClick">
-    <span>
+    <span :class="{'button-content': true, 'compact-content': isMobileView && rightIcon}">
       <span v-if="leftIcon" class="material-icons-round icon">arrow_back_ios</span>
       <slot />
       <span v-if="rightIcon" :class="{'material-icons-round': true, 'icon': true, 'mobile-icon': isMobileView}">arrow_forward_ios</span>
@@ -26,6 +26,7 @@ const isMobileView = ref(false)
 // 画面サイズの変更を監視する
 const updateMobileView = () => {
   if (isBrowser) {
+    // モバイルビュー判定を調整（よりきめ細かく）
     isMobileView.value = window.innerWidth <= 600
   }
 }
@@ -153,10 +154,36 @@ function scrollToTarget() {
 <style>
 @media (max-width: 600px) {
   .mobile-icon {
-    display: block;
+    display: inline-block;
     font-size: 12px !important;
-    margin-top: 2px !important;
-    margin-bottom: -2px;
+    margin-top: 1px !important;
+    margin-bottom: -1px;
+    vertical-align: middle;
+  }
+  
+  /* モバイル表示での最適化 */
+  .compact-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+  
+  .compact-content .mobile-icon {
+    font-size: 10px !important;
+    margin-left: -1px;
+  }
+  
+  /* 小さな画面サイズでの特別な最適化 */
+  @media (max-width: 380px) {
+    .compact-content {
+      letter-spacing: -0.5px; /* 文字間隔を狭める */
+    }
+    
+    .compact-content .mobile-icon {
+      font-size: 9px !important;
+    }
   }
 }
 </style>
