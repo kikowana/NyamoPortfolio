@@ -102,18 +102,11 @@ const props = defineProps({
 }
 
 .header-title:hover {
-  /* タイトル全体のアニメーションは控えめにする */
-  animation: titleFloat 2.5s ease-in-out infinite;
+  /* ホバー時の微妙な効果 - 位置は変えない */
+  filter: drop-shadow(0 0 2px rgba(233, 30, 99, 0.3));
 }
 
-@keyframes titleFloat {
-  0%, 100% {
-    transform: translateY(-50%);
-  }
-  50% {
-    transform: translateY(-52%);
-  }
-}
+/* アニメーションを削除して位置が変わらないようにする */
 
 .nav {
   display: flex;
@@ -221,8 +214,8 @@ const props = defineProps({
   color: var(--pastel-pink);
   opacity: 0.8;
   display: inline-block;
-  animation: floatAnimation 3s ease-in-out infinite;
   transition: all 0.3s ease;
+  /* 常時のアニメーションを削除 */
 }
 
 .title-decoration-left {
@@ -247,20 +240,13 @@ const props = defineProps({
 .header-title:hover .title-decoration {
   color: #e91e63;
   opacity: 1;
-  animation: decorationPulse 1.5s ease-in-out infinite alternate;
-  transform-origin: center;
+  /* アニメーションを静的な効果に変更 */
+  filter: drop-shadow(0 0 5px rgba(233, 30, 99, 0.5));
+  transform: scale(1.08);
+  transition: all 0.3s ease;
 }
 
-@keyframes decorationPulse {
-  0% {
-    transform: translateY(0) rotate(0deg) scale(1);
-    text-shadow: 0 0 5px rgba(233, 30, 99, 0.4);
-  }
-  100% {
-    transform: translateY(-8px) rotate(15deg) scale(1.2);
-    text-shadow: 0 0 12px rgba(233, 30, 99, 0.8);
-  }
-}
+/* アニメーションのキーフレームを削除 */
 
 @media (max-width: 600px) {
   .header {
@@ -280,35 +266,22 @@ const props = defineProps({
   
   .title-decoration {
     font-size: 0.9rem; /* 装飾アイコンも小さく */
-  }
-  
+  }  
   .header-title:hover {
-    animation: titleFloat 2.5s ease-in-out infinite;
+    /* モバイル表示時もホバー効果を変更 - 位置は変えない */
+    filter: drop-shadow(0 0 2px rgba(233, 30, 99, 0.3));
   }
   
-  @keyframes titleFloat {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-2px);
-    }
-  }
+  /* モバイル表示でもアニメーションを削除 */
   
   .header-title:hover .title-text {
     letter-spacing: 0.02em;
     text-shadow: 0 0 3px rgba(233, 30, 99, 0.2);
   }
-  
-  @keyframes decorationPulse {
-    0% {
-      transform: translateY(0) rotate(0deg) scale(1);
-      text-shadow: 0 0 5px rgba(233, 30, 99, 0.4);
-    }
-    100% {
-      transform: translateY(-6px) rotate(12deg) scale(1.3);
-      text-shadow: 0 0 10px rgba(233, 30, 99, 0.8);
-    }
+    /* モバイル表示でのアニメーションを削除 */
+  .header-title:hover .title-decoration {
+    transform: scale(1.05); /* モバイルでは控えめな効果に */
+    filter: drop-shadow(0 0 3px rgba(233, 30, 99, 0.4));
   }
   
   .nav {
