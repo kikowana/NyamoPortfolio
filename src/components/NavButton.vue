@@ -26,8 +26,8 @@ const isMobileView = ref(false)
 // 画面サイズの変更を監視する
 const updateMobileView = () => {
   if (isBrowser) {
-    // モバイルビュー判定を調整（よりきめ細かく）
-    isMobileView.value = window.innerWidth <= 600
+    // モバイルビュー判定を調整（850px以下の場合はモバイルビューに）
+    isMobileView.value = window.innerWidth <= 850
   }
 }
 
@@ -95,10 +95,9 @@ function scrollToTarget() {
   // スクロール調整のためにタイムアウトを設定
   setTimeout(() => {
     const el = document.getElementById(props.targetId)
-    if (el) {
-      // モバイルデバイスかどうかを確認（より適切な判定）
+    if (el) {      // モバイルデバイスかどうかを確認（より適切な判定）
       const isMobile = window.innerWidth <= 600
-      const isTablet = window.innerWidth > 600 && window.innerWidth <= 700
+      const isTablet = window.innerWidth > 600 && window.innerWidth <= 850
       
       // デフォルトのオフセット値を設定（PCサイズ）
       let offset = -100
@@ -152,8 +151,7 @@ function scrollToTarget() {
 </script>
 
 <style>
-@media (max-width: 600px) {
-  .mobile-icon {
+@media (max-width: 850px) {  .mobile-icon {
     display: inline-block;
     font-size: 12px !important;
     margin-top: 1px !important;
@@ -161,7 +159,7 @@ function scrollToTarget() {
     vertical-align: middle;
   }
   
-  /* モバイル表示での最適化 */
+  /* モバイル表示での最適化 (ブレークポイントを850pxに変更) */
   .compact-content {
     display: flex;
     flex-direction: row;
@@ -173,6 +171,21 @@ function scrollToTarget() {
   .compact-content .mobile-icon {
     font-size: 10px !important;
     margin-left: -1px;
+  }
+  
+  /* 850px〜601pxの間での調整 */
+  @media (min-width: 601px) {
+    .mobile-icon {
+      font-size: 14px !important;
+    }
+    
+    .compact-content .mobile-icon {
+      font-size: 12px !important;
+    }
+    
+    .compact-content {
+      gap: 4px;
+    }
   }
   
   /* 小さな画面サイズでの特別な最適化 */

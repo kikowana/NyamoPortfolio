@@ -50,9 +50,15 @@ defineProps({
 }
 
 /* モバイル端末での表示調整 */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .page-content {
-    padding-top: 60px;
+    padding-top: 115px; /* 850px以下では縦型レイアウトのヘッダーに合わせる */
+  }
+}
+
+@media (max-width: 600px) {
+  .page-content {
+    padding-top: 90px; /* 小さな画面ではさらに小さくなるヘッダーに合わせる */
   }
 }
 </style>

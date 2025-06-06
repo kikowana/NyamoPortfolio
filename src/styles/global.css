@@ -70,6 +70,13 @@ body {
   padding-top: 72px; /* ヘッダーの高さと同じ (72pxに更新) */
 }
 
+/* 850px以下の場合はヘッダーが縦型になるため、パディングを増やす */
+@media (max-width: 850px) {
+  .page-content {
+    padding-top: 115px; /* 縦型ヘッダーの高さに合わせる */
+  }
+}
+
 .site-content {
   position: relative;
   width: 100%;

@@ -70,6 +70,7 @@ const props = defineProps({
   position: relative;
   cursor: pointer;
   padding-bottom: 4px; /* 下部に少しパディングを追加 */
+  white-space: nowrap; /* タイトルを改行しないように */
 }
 
 .title-text {
@@ -114,6 +115,7 @@ const props = defineProps({
   gap: 12px;
   padding: 0;
   margin-left: auto; /* 右寄せを強化 */
+  flex-wrap: wrap; /* ボタンが折り返せるように設定 */
 }
 
 .nav-button {
@@ -147,21 +149,41 @@ const props = defineProps({
   }
 }
 
-/* モバイル・タブレットサイズでは中央揃えにする */
-@media (max-width: 700px) {
+/* PC表示でも狭いウィンドウのための調整 */
+@media (min-width: 851px) and (max-width: 1000px) {
+  .header-inner {
+    padding: 0 20px;
+  }
+  
+  .header-title {
+    font-size: 1.7rem;
+  }
+  
+  .nav {
+    gap: 10px;
+  }
+  
+  .nav-button {
+    padding: 7px 15px;
+    font-size: 0.95rem;
+  }
+}
+
+/* 850px以下のサイズでは中央揃えにする（PC画面で重なりを防ぐため） */
+@media (max-width: 850px) {
   .nav {
     justify-content: center; /* モバイルとタブレットでは中央揃え */
     margin-left: 0; /* 右寄せをキャンセル */
     width: 100%; /* 幅を100%に設定 */
   }
-}
-
-@media (max-width: 700px) {
+  
   .header-inner {
     flex-direction: column;
     height: auto;
     padding: 12px 16px;
+    transition: all 0.3s ease-in-out; /* スムーズな変化のためのトランジション */
   }
+  
   .header-title-link {
     position: relative;
     left: 0;
@@ -173,7 +195,10 @@ const props = defineProps({
     height: auto;
     display: flex;
     justify-content: center;
-  }  .header-title {
+    transition: all 0.3s ease-in-out; /* スムーズな変化のためのトランジション */
+  }
+  
+  .header-title {
     position: relative;
     left: 0;
     transform: none;
@@ -184,69 +209,37 @@ const props = defineProps({
     justify-content: center;
     align-items: center;
     height: auto;
-    padding-bottom: 2px; /* モバイル表示時のパディング調整 */
-    margin-top: 2px; /* 上側に少し余白を追加 */
+    padding-bottom: 2px;
+    margin-top: 2px;
+    white-space: normal; /* 幅が小さい場合は折り返し可能に */
   }
   
   .title-text {
     position: relative;
     text-align: center;
   }
-  
-  .hover-title {
-    width: 100%;
-    text-align: center;
-  }    .nav {
-    gap: 5px; /* 8pxから5pxに狭める */
-    justify-content: center; /* 中央揃え */
-    width: 100%; /* 横幅100%を明示 */
+}
+
+@media (min-width: 601px) and (max-width: 850px) {
+  .header-title {
+    font-size: 1.6rem; /* タイトルを少し小さくする */
   }
   
   .nav-button {
-    padding: 5px 14px; /* 6px 16pxから5px 14pxに小さくする */
-    font-size: 0.85rem; /* 0.9remから0.85remに小さくする */
-    border-radius: 18px; /* 角丸のスタイルを追加 */
+    padding: 5px 14px; 
+    font-size: 0.85rem;
+    margin-bottom: 4px; /* 下側に少し余白を追加 */
+  }
+  
+  .nav {
+    gap: 8px; /* ボタン間の間隔を調整 */
+    padding-bottom: 4px; /* ナビゲーションの下側に余白を追加 */
+  }
+  
+  .title-decoration {
+    font-size: 1rem; /* 装飾も少し小さく */
   }
 }
-
-.title-decoration {
-  font-size: 1.2rem;
-  color: var(--pastel-pink);
-  opacity: 0.8;
-  display: inline-block;
-  transition: all 0.3s ease;
-  /* 常時のアニメーションを削除 */
-}
-
-.title-decoration-left {
-  margin-right: 8px;
-  animation-delay: 0s;
-}
-
-.title-decoration-right {
-  margin-left: 8px;
-  animation-delay: 1.5s;
-}
-
-@keyframes floatAnimation {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-5px) rotate(5deg);
-  }
-}
-
-.header-title:hover .title-decoration {
-  color: #e91e63;
-  opacity: 1;
-  /* アニメーションを静的な効果に変更 */
-  filter: drop-shadow(0 0 5px rgba(233, 30, 99, 0.5));
-  transform: scale(1.08);
-  transition: all 0.3s ease;
-}
-
-/* アニメーションのキーフレームを削除 */
 
 @media (max-width: 600px) {
   .header {
