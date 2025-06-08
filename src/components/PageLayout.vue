@@ -50,7 +50,7 @@ defineProps({
 }
 
 /* モバイル端末での表示調整 */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .page-content {
     padding-top: 60px;
   }

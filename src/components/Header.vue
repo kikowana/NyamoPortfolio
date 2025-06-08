@@ -150,11 +150,12 @@ const props = defineProps({
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
   .header-inner {
     flex-direction: column;
     height: auto;
     padding: 12px 16px;
+    align-items: center; /* 中央寄せを強化 */
   }
   .header-title-link {
     position: relative;
@@ -191,13 +192,15 @@ const props = defineProps({
     width: 100%;
     text-align: center;
   }
-    .nav {
+  .nav {
     gap: 8px;
+    width: 100%;
+    justify-content: center; /* 中央寄せに変更 */
   }
   
   .nav-button {
-    padding: 6px 16px;
-    font-size: 0.9rem;
+    padding: 5px 12px;
+    font-size: 0.85rem;
   }
 }
 
@@ -253,7 +256,7 @@ const props = defineProps({
   }
   .header-inner {
     padding: 6px 8px 2px 8px;
-  }  .header-title {
+  }.header-title {
     font-size: 1.25rem;
     margin-bottom: 4px;
     display: flex;
@@ -292,13 +295,13 @@ const props = defineProps({
     }
   }.nav {
     width: 100%;
-    justify-content: space-evenly;
-    gap: 4px;
+    justify-content: center;
+    gap: 3px;
   }  .nav-button {
-    padding: 6px 6px;
-    font-size: 0.85rem;
-    min-width: 55px;
-    margin: 0 2px;
+    padding: 4px 5px;
+    font-size: 0.8rem;
+    min-width: 45px;
+    margin: 0 1px;
   }
 }
 </style>

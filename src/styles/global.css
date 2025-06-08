@@ -652,7 +652,7 @@ a:hover {
   line-height: 1.5;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
   .site-bg-wrapper main {
     max-width: 100%;
     margin: 0 auto;
@@ -760,10 +760,9 @@ a:hover {
   }
   .header-title {
     font-size: 1.4rem !important;
-  }
-  .nav-button {
-    padding: 6px 12px !important;
-    font-size: 0.95rem !important;
+  }  .nav-button {
+    padding: 5px 10px !important;
+    font-size: 0.85rem !important;
   }
   .link-btn {
     font-size: 1rem !important;
