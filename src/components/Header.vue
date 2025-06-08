@@ -57,7 +57,7 @@ const props = defineProps({
 .header-title {
   font-family: 'DM Serif Display', 'Noto Sans JP', sans-serif;
   font-size: 1.8rem;
-  color: #e91e63;
+  color: #ed70a2;
   font-weight: bold;
   letter-spacing: 0.05em;
   display: flex;
@@ -67,7 +67,7 @@ const props = defineProps({
   left: 32px;
   top: 60%;  /* 50%から60%に変更して下に移動 */
   transform: translateY(-50%);
-  text-shadow: 2px 2px 4px rgba(233, 30, 99, 0.2);
+  text-shadow: 2px 2px 4px rgba(237, 112, 162, 0.2);
   position: relative;
   cursor: pointer;
   padding-bottom: 4px; /* 下部に少しパディングを追加 */
@@ -77,12 +77,12 @@ const props = defineProps({
   display: inline-block;
   position: relative;
   transition: all 0.3s ease;
-  color: #e91e63;
+  color: #ed70a2;
 }
 
 .header-title:hover .title-text {
-  color: #d81b60;
-  text-shadow: 0 0 4px rgba(233, 30, 99, 0.25);
+  color: #d94380;
+  text-shadow: 0 0 4px rgba(237, 112, 162, 0.25);
   letter-spacing: 0.04em;
 }
 
@@ -230,7 +230,7 @@ const props = defineProps({
 }
 
 .header-title:hover .title-decoration {
-  color: #e91e63;
+  color: #ed70a2;
   opacity: 1;
   animation: decorationPulse 1.5s ease-in-out infinite alternate;
   transform-origin: center;
@@ -239,11 +239,11 @@ const props = defineProps({
 @keyframes decorationPulse {
   0% {
     transform: translateY(0) rotate(0deg) scale(1);
-    text-shadow: 0 0 5px rgba(233, 30, 99, 0.4);
+    text-shadow: 0 0 5px rgba(237, 112, 162, 0.4);
   }
   100% {
     transform: translateY(-8px) rotate(15deg) scale(1.2);
-    text-shadow: 0 0 12px rgba(233, 30, 99, 0.8);
+    text-shadow: 0 0 12px rgba(237, 112, 162, 0.8);
   }
 }
 
@@ -276,20 +276,19 @@ const props = defineProps({
       transform: translateY(-2px);
     }
   }
-  
-  .header-title:hover .title-text {
+    .header-title:hover .title-text {
     letter-spacing: 0.02em;
-    text-shadow: 0 0 3px rgba(233, 30, 99, 0.2);
+    text-shadow: 0 0 3px rgba(237, 112, 162, 0.2);
   }
   
   @keyframes decorationPulse {
     0% {
       transform: translateY(0) rotate(0deg) scale(1);
-      text-shadow: 0 0 5px rgba(233, 30, 99, 0.4);
+      text-shadow: 0 0 5px rgba(237, 112, 162, 0.4);
     }
     100% {
       transform: translateY(-6px) rotate(12deg) scale(1.3);
-      text-shadow: 0 0 10px rgba(233, 30, 99, 0.8);
+      text-shadow: 0 0 10px rgba(237, 112, 162, 0.8);
     }
   }.nav {
     width: 100%;

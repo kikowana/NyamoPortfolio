@@ -7,19 +7,19 @@
   --pastel-orange: #FFD8B1;
   
   /* テーマカラー（常にピンク固定） */
-  --theme-color: #e91e63; /* ピンク */
-  --theme-accent-color: #ad1457; /* 濃いピンク */
-  --theme-color-rgb: 233, 30, 99; /* ピンク（RGB形式） */
+  --theme-color: #ed70a2; /* ピンク */
+  --theme-accent-color: #d94380; /* 濃いピンク */
+  --theme-color-rgb: 237, 112, 162; /* ピンク（RGB形式） */
   
   /* 各セクションのテーマカラー（すべてピンクに統一） */
-  --about-color: #e91e63;
-  --about-color-rgb: 233, 30, 99;
-  --flow-color: #e91e63;
-  --flow-color-rgb: 233, 30, 99;
-  --price-color: #e91e63;
-  --price-color-rgb: 233, 30, 99;
-  --links-color: #e91e63;
-  --links-color-rgb: 233, 30, 99;
+  --about-color: #ed70a2;
+  --about-color-rgb: 237, 112, 162;
+  --flow-color: #ed70a2;
+  --flow-color-rgb: 237, 112, 162;
+  --price-color: #ed70a2;
+  --price-color-rgb: 237, 112, 162;
+  --links-color: #ed70a2;
+  --links-color-rgb: 237, 112, 162;
 }
 
 * {
@@ -177,14 +177,14 @@ header {
   position: relative;
   width: 100%;
   background: linear-gradient(to bottom, #ffffff 0%, #fef5f7 100%);
-  box-shadow: 0 4px 16px rgba(233,30,99,0.08);
+  box-shadow: 0 4px 16px rgba(237,112,162,0.08);
   z-index: 999;
 }
 
 .header-title {
   font-family: 'DM Serif Display', 'Noto Sans JP', sans-serif;
   font-size: 1.9rem;
-  color: #e91e63;
+  color: #ed70a2;
   font-weight: bold;
   letter-spacing: 0.05em;
   text-shadow: 1px 1px 2px rgba(250, 218, 221, 0.8);
@@ -213,11 +213,11 @@ header {
   padding: 8px 16px;
   border-radius: 30px;
   border: none;
-  color: #e91e63;
+  color: #ed70a2;
   font-weight: bold;
   cursor: pointer;
   background: #ffffff;
-  box-shadow: 0 4px 12px rgba(233,30,99,0.12);
+  box-shadow: 0 4px 12px rgba(237,112,162,0.12);
   transition: all 0.3s ease;
   outline: none;
   overflow: hidden;
@@ -236,7 +236,7 @@ header {
   transition: transform 0.3s ease;
   font-size: 16px;
   vertical-align: middle;
-  color: #e91e63;
+  color: #ed70a2;
 }
 
 .material-icons-round.icon {
@@ -268,13 +268,13 @@ header {
 .nav-button:hover {
   background: #fadadd;
   color: #fff;
-  box-shadow: 0 6px 16px rgba(233,30,99,0.2);
+  box-shadow: 0 6px 16px rgba(237,112,162,0.2);
 }
 
 .nav-button:active {
-  background: #e91e63;
+  background: #ed70a2;
   color: #fff;
-  box-shadow: 0 2px 8px rgba(233,30,99,0.15);
+  box-shadow: 0 2px 8px rgba(237,112,162,0.15);
   transform: translateY(2px);
 }
 
